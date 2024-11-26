@@ -1,3 +1,4 @@
+#[allow(clippy::all)]
 use std::str::FromStr;
 
 use serde::{Deserialize, Serialize};
@@ -15,7 +16,6 @@ use solana_transaction_status::{
 
 pub mod convert;
 
-// NOTE: Jito Labs added
 pub mod solana {
     pub mod geyser {
         tonic::include_proto!("solana.geyser");
@@ -24,6 +24,12 @@ pub mod solana {
         pub mod confirmed_block {
             tonic::include_proto!("solana.storage.confirmed_block");
         }
+    }
+    pub mod tx_by_addr {
+        tonic::include_proto!("solana.storage.transaction_by_addr");
+    }
+    pub mod entries {
+        tonic::include_proto!("solana.storage.entries");
     }
 }
 
